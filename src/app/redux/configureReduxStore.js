@@ -1,37 +1,16 @@
-import { createStore } from "redux";
-
+import { createStore, applyMiddleware } from "redux";
+import { createLogger } from "redux-logger";
+import createSagaMiddleware from "redux-saga";
 import rootReducer from "./reducers/rootReducer";
+import * as sagas from "./sagas.mock";
 
-export default function configureStore(initialState) {
-  return createStore(rootReducer, initialState);
-}
+const sagaMiddleware = createSagaMiddleware();
 
-/* combineReducers({
-    tasks(tasks = defaultState.tasks, action) {
-      switch (action.type) {
-        case mutations.CREATE_TASK:
-          return [
-            ...tasks,
-            {
-              id: action.taskID,
-              name: "New Task",
-              group: action.groupID,
-              owner: action.ownerID,
-              isComplete: false,
-            },
-          ];
-      }
-      return tasks;
-    },
-    comments(comments = defaultState.comments, action) {
-      return comments;
-    },
-    groups(groups = defaultState.groups, action) {
-      return groups;
-    },
-    users(users = defaultState.users, action) {
-      return users;
-    },
-  }),
+export const store = createStore(
+  rootReducer,
   applyMiddleware(createLogger(), sagaMiddleware)
-  */
+);
+
+for (let saga in sagas) {
+  sagaMiddleware.run(sagas[saga]);
+}

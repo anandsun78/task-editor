@@ -1,15 +1,20 @@
 import React from "react";
 import { Provider } from "react-redux";
-import configureStore from "../redux/configureReduxStore";
+import { Router, Route } from "react-router-dom";
+import { store } from "../redux/configureReduxStore";
+import Dashboard from "./Dashboard";
+import history from "../redux/history";
+import Navigation from "./Navigation";
 
-const store = configureStore();
-
-const Main = () => {
-  return (
+const Main = () => (
+  <Router history={history}>
     <Provider store={store}>
-      <div>Dashboard goes here</div>
+      <div>
+        <Navigation />
+        <Route exact path="/dashboard" component={Dashboard} />
+      </div>
     </Provider>
-  );
-};
+  </Router>
+);
 
 export default Main;
