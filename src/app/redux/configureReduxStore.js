@@ -1,12 +1,12 @@
-import { createStore, applyMiddleware } from "redux";
+import { createStore } from "redux";
 
 import rootReducer from "./reducers/rootReducer";
 
 export default function configureStore(initialState) {
   return createStore(rootReducer, initialState);
 }
-rootReducer;
-/*combineReducers({
+
+/* combineReducers({
     tasks(tasks = defaultState.tasks, action) {
       switch (action.type) {
         case mutations.CREATE_TASK:

@@ -1,6 +1,5 @@
-import * as types from "../actions/actionTypes";
 import { defaultState } from "../../../server/defaultState";
 
-export default function taskReducer(tasks = defaultState.tasks, action) {
+export default function taskReducer(tasks = defaultState.tasks) {
   return tasks;
 }
