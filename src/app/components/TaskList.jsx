@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { requestTaskCreation } from "../redux/actions/taskActions";
 
 const TaskList = ({ tasks, name, id, createNewTask }) => (
@@ -8,7 +9,9 @@ const TaskList = ({ tasks, name, id, createNewTask }) => (
     <h3>{name}</h3>
     <div>
       {tasks.map((task) => (
-        <div key={task.name}>{task.name}</div>
+        <Link to={`/task/${task.id}`} key={task.name}>
+          <div>{task.name}</div>
+        </Link>
       ))}
     </div>
     <button type="button" onClick={() => createNewTask(id)}>

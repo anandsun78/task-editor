@@ -14,6 +14,20 @@ export default function taskReducer(tasks = defaultState.tasks, action) {
           isComplete: false,
         },
       ];
+    case types.SET_TASK_COMPLETE:
+      return tasks.map((task) =>
+        task.id === action.taskId
+          ? { ...task, isComplete: action.isComplete }
+          : task
+      );
+    case types.SET_TASK_NAME:
+      return tasks.map((task) =>
+        task.id === action.taskId ? { ...task, name: action.name } : task
+      );
+    case types.SET_TASK_GROUP:
+      return tasks.map((task) =>
+        task.id === action.taskId ? { ...task, group: action.groupId } : task
+      );
     default:
       return tasks;
   }

@@ -5,6 +5,7 @@ import { store } from "../redux/configureReduxStore";
 import Dashboard from "./Dashboard";
 import history from "../redux/history";
 import Navigation from "./Navigation";
+import TaskDetail from "./TaskDetail";
 
 const Main = () => (
   <Router history={history}>
@@ -12,6 +13,7 @@ const Main = () => (
       <div>
         <Navigation />
         <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/task/:id" component={TaskDetail} />
       </div>
     </Provider>
   </Router>

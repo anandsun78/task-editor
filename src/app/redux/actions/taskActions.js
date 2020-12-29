@@ -8,3 +8,15 @@ export function requestTaskCreation(groupId) {
 export function createTask(taskId, groupId, ownerId) {
   return { type: types.CREATE_TASK, taskId, groupId, ownerId };
 }
+
+export function setTaskCompletion(id, isComplete) {
+  return { type: types.SET_TASK_COMPLETE, taskId: id, isComplete };
+}
+
+export function setTaskName(id, name) {
+  return { type: types.SET_TASK_NAME, taskId: id, name };
+}
+
+export function setTaskGroup(id, groupId) {
+  return { type: types.SET_TASK_GROUP, taskId: id, groupId };
+}
