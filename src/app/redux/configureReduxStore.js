@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from "redux";
 import { createLogger } from "redux-logger";
 import createSagaMiddleware from "redux-saga";
 import rootReducer from "./reducers/rootReducer";
-import * as sagas from "./sagas.mock";
+import * as sagas from "./sagas";
 
 const sagaMiddleware = createSagaMiddleware();
 

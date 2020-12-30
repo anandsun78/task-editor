@@ -20,3 +20,18 @@ export function setTaskName(id, name) {
 export function setTaskGroup(id, groupId) {
   return { type: types.SET_TASK_GROUP, taskId: id, groupId };
 }
+
+export function requestAuthenticateUser(username, password) {
+  return { type: types.REQUEST_AUTHENTICATE_USER, username, password };
+}
+
+export function processAuthenticateUser(
+  status = types.AUTHENTICATING,
+  session = null
+) {
+  return {
+    type: types.PROCESSING_AUTHENTICATE_USER,
+    authenticated: status,
+    session,
+  };
+}

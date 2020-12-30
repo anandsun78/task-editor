@@ -3,14 +3,14 @@ import { connectDB } from "./connect-db";
 
 export async function initializeDB() {
   let db = await connectDB();
-
-  for (let collectionName in defaultState) {
-    const response = await db
-      .collection(collectionName)
-      .insertMany(defaultState[collectionName]);
+  const user = await db.collection(`users`).findOne({ id: "U1" });
+  if (!user) {
+    for (let collectionName in defaultState) {
+      const response = await db
+        .collection(collectionName)
+        .insertMany(defaultState[collectionName]);
+    }
   }
-
-  client.close();
 }
 
 initializeDB();

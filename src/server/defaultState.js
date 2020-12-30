@@ -1,15 +1,21 @@
 /* eslint-disable import/prefer-default-export */
+import md5 from "md5";
 export const defaultState = {
+  // session: {
+  //  authenticated: false,
+  // },
   users: [
     {
       id: "U1",
       name: "Dev",
       friends: [`U2`],
+      passwordHash: md5("TESTPASS"),
     },
     {
       id: "U2",
       name: "C. Eeyo",
       friends: [],
+      passwordHash: md5("PASSWORD"),
     },
   ],
   groups: [
