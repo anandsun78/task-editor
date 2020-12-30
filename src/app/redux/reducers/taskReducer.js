@@ -1,8 +1,9 @@
-import { defaultState } from "../../../server/defaultState";
 import * as types from "../actions/actionTypes";
 
-export default function taskReducer(tasks = defaultState.tasks, action) {
+export default function taskReducer(tasks = [], action) {
   switch (action.type) {
+    case types.SET_STATE:
+      return action.state.tasks;
     case types.CREATE_TASK:
       return [
         ...tasks,

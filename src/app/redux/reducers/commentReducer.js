@@ -1,5 +1,3 @@
-import { defaultState } from "../../../server/defaultState";
-
-export default function commentReducer(comments = defaultState.comments) {
+export default function commentReducer(comments = []) {
   return comments;
 }

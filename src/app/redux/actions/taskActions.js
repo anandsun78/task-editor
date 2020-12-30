@@ -35,3 +35,10 @@ export function processAuthenticateUser(
     session,
   };
 }
+
+export function setState(state = {}) {
+  return {
+    type: types.SET_STATE,
+    state,
+  };
+}

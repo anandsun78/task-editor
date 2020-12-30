@@ -7,6 +7,8 @@ export default function authenticateReducer(
 ) {
   const { type, authenticated, session } = action;
   switch (type) {
+    case types.SET_STATE:
+      return { ...userSession, id: action.state.session.id };
     case types.REQUEST_AUTHENTICATE_USER:
       return { ...userSession, authenticated: types.AUTHENTICATED };
     case types.PROCESSING_AUTHENTICATE_USER:

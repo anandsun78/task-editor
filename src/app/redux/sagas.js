@@ -3,6 +3,7 @@ import uuid from "uuid";
 import axios from "axios";
 import * as actions from "./actions/taskActions";
 import * as types from "./actions/actionTypes";
+import history from "./history";
 
 const url = "http://localhost:8888";
 
@@ -47,15 +48,18 @@ export function* userAuthenticationSaga() {
   while (true) {
     const { username, password } = yield take(types.REQUEST_AUTHENTICATE_USER);
     try {
-      const { data } = axios.post(url + `/authenticate`, {
+      const { data } = yield axios.post(url + `/authenticate`, {
         username,
         password,
       });
       if (!data) {
         throw new Error();
       }
+      yield put(actions.setState(data.state));
+      yield put(actions.processAuthenticateUser(types.AUTHENTICATED));
+
+      history.push("/dashboard");
     } catch (e) {
-      console.log("Cannot authenticate");
       yield put(actions.processAuthenticateUser(types.NOT_AUTHENTICATED));
     }
   }
